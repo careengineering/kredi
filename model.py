@@ -13,7 +13,13 @@ class Kredi:
 
   def taksit_hesapla(self):
     faiz_suresi_ay = self.faiz_suresi_yil * 12
-    kredi_taksit_tutari = round(self.kredi_tutari / faiz_suresi_ay,2)
+
+    if self.kredi_faiz_orani>0:
+      kredi_taksit_tutari = round(self.kredi_tutari * (self.kredi_faiz_orani * (self.kredi_faiz_orani+1)**faiz_suresi_ay)/(((self.kredi_faiz_orani+1)**faiz_suresi_ay) - 1) ,2)
+    
+    else: 
+      kredi_taksit_tutari = round(self.kredi_tutari / faiz_suresi_ay,2)
+
     son_kredi_taksit_tutari = round(self.kredi_tutari - round((faiz_suresi_ay-1)*kredi_taksit_tutari,2),2)
 
     taksitler = []
@@ -25,4 +31,3 @@ class Kredi:
   def odeme(self):
     self.taksitler.pop(0)
     return self.taksitler
-

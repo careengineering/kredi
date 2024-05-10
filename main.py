@@ -15,7 +15,7 @@ aylik_sabit_birikim_tutari =st.sidebar.number_input("Aylık sabit birikim tutar�
 rezidans_alis_fiyati = st.sidebar.number_input("Rezidans Alış Fiyatı", value=1250000.0)
 rezidans_kira_tutari = st.sidebar.number_input("Rezidans Kira Bedeli", value=8000.0)
 pesinat_orani = st.sidebar.number_input("Peşinat Oranı (%)", value=20.0) / 100
-kredi_faiz_orani = st.sidebar.number_input("Kredi Faiz Oranı (%)", value=0.0) / 100
+kredi_faiz_orani = st.sidebar.number_input("Kredi Faiz Oranı (%)", value=1.0) / 100
 faiz_süresi_yil = st.sidebar.number_input("Kredi Faiz Süresi (yıl)", value=15)
 ev_pesinat_tutari = round(rezidans_alis_fiyati * pesinat_orani,2)
 kredi_tutari = rezidans_alis_fiyati - ev_pesinat_tutari
@@ -46,7 +46,6 @@ for i in range(hedef_ay):
 
 st.subheader("Hedef yıl sonunda: ")
 st.write(f"Toplam aylık gelir: {aylik_birikim_tutari:,.2f} TL")
-st.write(f"Toplam birikim: {toplam_birikim:,.2f} TL")
 st.write(f"Toplam ev sayısı: {ev_sayisi}")
 
 
@@ -58,3 +57,7 @@ if krediler:
       toplam_borc += sum(k.taksitler)
 
   st.write(f"Toplam kalan kredi borcu: {toplam_borc:,.2f} TL")
+
+
+
+  
